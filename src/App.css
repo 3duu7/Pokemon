@@ -1,0 +1,68 @@
+.App {
+  text-align: center;
+}
+
+/* DivTable.com */
+.divTable {
+  display: table;
+  max-width: 20em;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.divTableRow {
+  display: table-row;
+}
+.divTableHeading {
+  background-color: #eee;
+  display: table-header-group;
+}
+.divTableCell,
+.divTableHead {
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 3px 10px;
+}
+.divTableHeading {
+  background-color: #eee;
+  display: table-header-group;
+  font-weight: bold;
+}
+.divTableFoot {
+  background-color: #eee;
+  display: table-footer-group;
+  font-weight: bold;
+}
+.divTableBody {
+  display: table-row-group;
+  position: relative;
+  top: -60px; /* ajustar los valores para mover la imagen */
+  left: -190px;
+  height: 5em;
+}
+
+.divTableCell:nth-child(odd) {
+  background-color: gainsboro;
+}
+
+.container {
+  display: flex;
+  opacity: 0.9;
+
+  justify-content: center;
+}
+
+img {
+  position: relative;
+  top: -85px; /* ajustar los valores para mover la imagen */
+  left: -210px;
+  height: 5em;
+}
+
+input {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 1rem;
+  display: block;
+  margin: 15px;
+}
