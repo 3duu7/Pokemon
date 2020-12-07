@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import getPokemon from "./../Services/getPokemon";
-
+import Attack from "./attacks";
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState({});
+  const [pokemonMoves, setPokemonMoves] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState([]);
-
 
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
@@ -14,19 +14,18 @@ const Pokemon = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //informacion pokemon
-    getPokemon(pokemon).then(responsePokemon => {
-      if(!responsePokemon) return
+    getPokemon(pokemon).then((responsePokemon) => {
+      if (!responsePokemon) return;
 
       setPokemonType(responsePokemon.types);
       setPokemonData([responsePokemon]);
-    })
-
-
+      setPokemonMoves(responsePokemon.moves);
+    });
   };
-
 
   return (
     <div className="App">
+      {/* Buscar pokemon */}
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -36,6 +35,7 @@ const Pokemon = () => {
           />
         </label>
       </form>
+      {/* Mostrar infomarcion */}
       {pokemonData.map((data) => {
         return (
           <div className="container">
@@ -44,23 +44,18 @@ const Pokemon = () => {
               <div className="divTableBody">
                 <div className="divTableRow">
                   {pokemonType.map((type) => {
-                    return (
-                      <div className="divTableCell">{type.type.name}</div>
-                    )
-                  }
-                  )}
+                    return <div className="divTableCell">{type.type.name}</div>;
+                  })}
                 </div>
               </div>
             </div>
           </div>
         );
       })}
+      {/* Mostrar ataques */}
+      <Attack moves={pokemonMoves} />
     </div>
   );
 };
 
-
-
-
 export default Pokemon;
-
